@@ -1,0 +1,26 @@
+
+
+SELECT 'H0000000000000000000000000I00000'+cast((select COUNT(SEQ) from ASSISTENCIA..TIPTOE_BASICBOOK WHERE ISNUMERIC(SEQ) = 1) as varchar(max))+'E0000000000A000000000000000'+cast((select COUNT(SEQ) from ASSISTENCIA..TIPTOE_BASICBOOK WHERE ISNUMERIC(SEQ) = 1) as varchar(max))+'F' AS LINHA
+
+UNION ALL
+
+SELECT '40001233530                     '+'0BZBBA'+ -- Complemento da Apólice
+										LTRIM(RTRIM(SEQ))+(REPLICATE (' ',25- LEN(LTRIM(RTRIM(SEQ))))) -- Apólice
+										+'00000000000' + (REPLICATE (' ',15-  len(LTRIM(RTRIM('00000000000'))))) -- CPF
+										+ 'I'+LTRIM(RTRIM(upper(NOME))) + (REPLICATE (' ',80-  len(LTRIM(RTRIM(upper(NOME)))))) -- Nome do segurado
+										+ SUBSTRING(CONVERT(VARCHAR(8), GETDATE()-30, 112),1,6)+'01' -- Referência do Arquivo
+										+'        00000000000000' + REPLICATE(' ',91) -- Espaços
+										+'UF'
+										+REPLICATE (' ', 599) 
+										+REPLICATE ('0', 12) 
+										FROM TIPTOE_BASICBOOK AS LINHA
+
+
+WHERE ISNUMERIC(SEQ) = 1
+
+--DROP TABLE  TIP052019
+--SELECT * FROM TIPTOE_BASICBOOK
+
+--BEGIN TRAN 
+--INSERT INTO TIPTOE_BASICBOOK
+--SELECT * FROM TIP052019

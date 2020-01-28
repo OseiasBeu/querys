@@ -1,0 +1,7 @@
+SELECT 
+* FROM CTRL_OPERACOES..CTRL_FTP
+WHERE [LOGIN] LIKE '%acepc%'
+
+
+use DATAFEEDS
+select * from CETELEM_VENDAS where Policy like '%CT1437169589235%'

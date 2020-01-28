@@ -1,0 +1,5 @@
+https://support.google.com/a/answer/1371415?hl=pt-BR
+
+^.{13}(?<ns>.{5}).{24}(?<ap>.{15}).+$
+
+0[0][^0][1-9]$
